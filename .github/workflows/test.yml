@@ -1,16 +1,26 @@
+name: Test Workflow
+
+on:
+  push:
+    branches:
+      - "*"
+
 jobs:
-  testBullFrog:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Bullfrog to block everything except *.github.com
-        uses: bullfrogsec/bullfrog@1472c28724ef13ea0adc54d0a42c2853d42786b1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          egress-policy: block
-          allowed-domains: |
-            *.github.com
-      - name: Check working directory
+          python-version: '3.8'
+
+      - name: Install dependencies
         run: |
-          pwd  # Print the current working directory
-          ls -l  # List files in the current directory
-      - name: Run bypass.py script
-        run: python3 bypass.py  # Run the script in the root directory
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt  # Uncomment if you have dependencies
+
+      - name: Run bypass.py
+        run: python3 bypass.py  # Make sure bypass.py is in the root

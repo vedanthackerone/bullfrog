@@ -17,10 +17,5 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          pip install -r requirements.txt  # Uncomment if you have dependencies
-
       - name: Run bypass.py
         run: python3 bypass.py  # Make sure bypass.py is in the root

